@@ -274,16 +274,80 @@ ul {
   opacity: 1;
 }
 
-.btn-nav {
-  background-color: var(--text-dark);
-  color: white !important;
-  padding: 10px 25px;
-  border-radius: 50px;
-  opacity: 1 !important;
-}
-
 .btn-nav:hover {
   background-color: var(--accent);
+}
+
+/* Menu Toggle */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.menu-toggle .bar {
+  width: 25px;
+  height: 2px;
+  background-color: var(--text-dark);
+  transition: var(--transition);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+.mobile-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.mobile-link {
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dark);
+}
+
+.btn-mobile {
+  padding: 15px 40px;
+  background: var(--accent);
+  color: white;
+  font-weight: 800;
+  border-radius: 50px;
+  margin-top: 20px;
+}
+
+/* Hamburger Animation */
+.menu-toggle.active .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* Hero - Magazine Style */
@@ -567,22 +631,81 @@ body{
 
 /* Adjustments */
 @media (max-width: 768px) {
+  section {
+    padding: 80px 20px; /* Reduced padding on mobile */
+  }
+
+  .navbar {
+    width: 90%;
+    padding: 15px 25px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
   .hero {
     flex-direction: column;
     text-align: center;
     height: auto;
+    padding: 140px 20px 60px;
+    gap: 60px;
   }
-  .nav-links {
-    display: none;
+
+  .hero-bg-text {
+    font-size: 8rem;
+    top: 20%;
   }
+
+  .hero-content h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-btns .btn {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .hero-image-container {
+    height: 400px;
+    width: 100%;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
   .modality-item, .modality-item.alt {
     flex-direction: column;
+    gap: 30px;
   }
+
   .modality-img {
     width: 100%;
     height: 300px;
+    order: -1;
   }
+
   .results-grid {
     grid-template-columns: 1fr;
+  }
+
+  .plans-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .plan-card.featured {
+    transform: scale(1);
   }
 }
